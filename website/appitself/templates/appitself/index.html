@@ -10,20 +10,21 @@
             <div class="mb-3" style="height: 30px;"></div>
             <form id="point_form" method="POST" >
                 {% csrf_token %}
-                <!--<div class="mb-3">
-                    <label for="field1" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="field1">
+                <div class="form-group">
+                    {{ test.name }}
                 </div>
-                <div class="mb-3">
-                    <label for="field2" class="form-label">Longitude</label>
-                    <input type="text" class="form-control" id="field2">
+                <div class="col-md-1" style="height: 15px;"></div>
+                <div class="form-group">
+                    {{ test.longitude }}
                 </div>
-                <div class="mb-3">
-                    <label for="field3" class="form-label">Latitude</label>
-                    <input type="text" class="form-control" id="field3">
-                </div>-->
-                {{ test.as_p }}
-                <button type="submit" class="btn btn-primary">Point</button>
+                <div class="col-md-1" style="height: 15px;"></div>
+                <div class="form-group">
+                    {{ test.latitude }}
+                </div>
+                <div class="col-md-1" style="height: 15px;"></div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Point</button>
+                </div>
             </form>
         </div>
         <!-- Main Map Area -->
