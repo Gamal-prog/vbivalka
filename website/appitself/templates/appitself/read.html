@@ -1,3 +1,30 @@
+{% extends 'appitself/base.html' %}
+
+{% block title %} List of Points {% endblock title %}
+
+{% block body %} 
+
+    {% for point in points %}
+        {% if forloop.counter0|divisibleby:3 %} <div class="row"> {% endif %}
+            <!-- Card -->
+            <div class="card" style="width: 18rem; margin: auto;">
+                <div class="card-body">
+                <h5 class="card-title">{{ point.name }}</h5>
+                <div class="row">
+                    <p>
+                        Longitude: {{ point.longitude }}
+                    </p>
+                </div>
+                <p class="card-text">
+                    Latitude: {{ point.latitude }}
+                </p>
+                </div>
+            </div>
+        {% if forloop.counter|divisibleby:3 or forloop.last %} </div> <hr> {% endif %}
+    {% endfor %}
+
+{% endblock body %}
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,3 +43,4 @@
     {% endfor %}
 </body>
 </html>
+-->

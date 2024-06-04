@@ -1,3 +1,16 @@
+{% extends 'appitself/base.html' %}
+
+{% block body %} 
+
+    <form method="POST" class="mb-3 post-form" id="point_form">
+        {% csrf_token %}
+        {{ test.as_p }}
+        <button type="submit" class="save btn btn-success">Point</button>
+    </form>
+    
+{% endblock body %}
+
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,14 +20,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="POST" class="mb-3 post-form" id="point_form">
-        {% csrf_token %}
-        {{ test.as_p }}
-        <button type="submit" class="save btn btn-success">Point</button>
-    </form>
+    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../../static/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+-->
