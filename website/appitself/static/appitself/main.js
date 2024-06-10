@@ -19,6 +19,7 @@ $(document).ready(function(){
             // Gets datas from click
             map.events.add('click', function (e) {
                 var coords = e.get('coords');
+                map.balloon.open(coords, 'Current position!');
                 $('#id_latitude').val(coords[0]);
                 $('#id_longitude').val(coords[1]);
             });
