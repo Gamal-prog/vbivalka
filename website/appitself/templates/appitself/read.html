@@ -4,27 +4,36 @@
 
 {% block body %} 
 
-    {% for point in points %}
-        {% if forloop.counter0|divisibleby:3 %} <div class="row"> {% endif %}
-            <!-- Card -->
-            <div class="card" style="width: 18rem; margin: auto;">
-                <div class="card-body">
-                <h5 class="card-title">{{ point.name }}</h5>
-                <p class="card-text">
-                    Street: {{ point.street }}
-                </p>
-                <p class="card-text">
-                    Longitude: {{ point.longitude }}
-                </p>
-                <p class="card-text">
-                    Latitude: {{ point.latitude }}
-                </p>
-                <p class="card-text">
-                    ID: {{ point.pk }}
-                </p>
-                </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="container text-center">
+                <h2>All Points</h2>
             </div>
-        {% if forloop.counter|divisibleby:3 or forloop.last %} </div> <hr> {% endif %}
-    {% endfor %}
+            <div class="col-md-8 bg-light py-4 border p-4" style="border-radius: 24px;">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Street</th>
+                            <th scope="col">Longitude</th>
+                            <th scope="col">Latitude</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for point in points %}
+                            <tr>
+                                <th scope="row">{{ point.pk }}</th>
+                                <td>{{ point.name }}</td>
+                                <td>{{ point.street }}</td>
+                                <td>{{ point.longitude }}</td>
+                                <td>{{ point.latitude }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 {% endblock body %}
