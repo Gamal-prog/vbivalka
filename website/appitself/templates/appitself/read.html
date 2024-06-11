@@ -19,6 +19,9 @@
                 <p class="card-text">
                     Latitude: {{ point.latitude }}
                 </p>
+                <p class="card-text">
+                    ID: {{ point.pk }}
+                </p>
                 </div>
             </div>
         {% if forloop.counter|divisibleby:3 or forloop.last %} </div> <hr> {% endif %}
