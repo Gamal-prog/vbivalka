@@ -1,43 +1,11 @@
-{% extends 'appitself/base.html' %}
-
-{% block body %} 
-
-    <!-- Main Content -->
-    <div class="row" style="display: flex; justify-content: center;">
-        <!-- Sidebar -->
-        <div class="col-md-2 bg-light py-4 border p-4" style="border-radius: 10px;">
-            <h2>New Point</h2>
-            <div class="mb-3" style="height: 30px;"></div>
-            <form id="point_form" method="POST" >
-                {% csrf_token %}
-                <div class="form-group">
-                    {{ test.name }}
-                </div>
-                <div class="col-md-1" style="height: 15px;"></div>
-                <div class="form-group">
-                    {{ test.street }}
-                </div>
-                <div class="col-md-1" style="height: 15px;"></div>
-                <div class="form-group">
-                    {{ test.longitude }}
-                </div>
-                <div class="col-md-1" style="height: 15px;"></div>
-                <div class="form-group">
-                    {{ test.latitude }}
-                </div>
-                <div class="col-md-1" style="height: 15px;"></div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success">Point</button>
-                </div>
-            </form>
-        </div>
-        <!-- Main Map Area -->
-        <div class="col-md-6">
-            <div class="border p-4" style="border-radius: 10px; display: flex; justify-content: center;">
-                <!-- Map content goes here -->
-                <div id="Bishkek map" style="width: 600px; height: 450px"></div>
-            </div>
-        </div>
-    </div>
-
-{% endblock body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Login Page</h1>
+</body>
+</html>

@@ -4,6 +4,9 @@ from .forms import PointForm
 from django.http import JsonResponse
 
 # Create your views here.
+def index(request):
+    return render(request, 'appitself/index.html')
+
 def read(request):
     points = Point.objects.all()
     content = {'points': points}
@@ -17,6 +20,6 @@ def create(request):
             form.save()
             return JsonResponse({'message': 'Success'})
 
-    content = {'test': form}
-    return render(request, 'appitself/index.html', content)
+    content = {'new_point': form}
+    return render(request, 'appitself/create.html', content)
 
