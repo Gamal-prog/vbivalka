@@ -1,29 +1,28 @@
 $(document).ready(function(){
 
-        ymaps.ready(init);
-        function init() {
-            // Display the map on Bishkek city
-            var map = new ymaps.Map("Bishkek map", {
-                center: [42.874621, 74.605438],  // Bishkek's coordinate 
-                zoom: 12 // Scale
-            });
-        
-            // Set the city name for the point
-            var placemark = new ymaps.Placemark([42.874621, 74.605438], {
-                balloonContent: 'Бишкек' 
-            });
-            
-            // Add the name
-            map.geoObjects.add(placemark);
+    var map = L.map('Bishkek map', {
+        center: [42.874621, 74.605438],
+        zoom: 13
+    });
 
-            // Gets datas from click
-            map.events.add('click', function (e) {
-                var coords = e.get('coords');
-                map.balloon.open(coords, 'Current position!');
-                $('#id_latitude').val(coords[0]);
-                $('#id_longitude').val(coords[1]);
-            });
-        }
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map); 
+
+    var marker; 
+    function onMapClick(e) {
+        var coords = e.latlng;
+        $('#id_longitude').val(coords.lng);
+        $('#id_latitude').val(coords.lat);
+
+        if (marker) 
+            map.removeLayer(marker); 
+
+        marker = L.marker(coords).addTo(map); 
+    }
+
+    map.on('click', onMapClick);
 
     $('#point_form').submit(function(e) {
         e.preventDefault();  
