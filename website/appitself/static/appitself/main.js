@@ -7,7 +7,6 @@ $(document).ready(function(){
     
     L.tileLayer('http://tile2.maps.2gis.com/tiles?x={x}&y={y}&z={z}', {
         maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map); 
 
     var marker; 
