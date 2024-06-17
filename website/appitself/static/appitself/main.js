@@ -4,8 +4,8 @@ $(document).ready(function(){
         center: [42.874621, 74.605438],
         zoom: 13
     });
-
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    
+    L.tileLayer('http://tile2.maps.2gis.com/tiles?x={x}&y={y}&z={z}', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map); 
