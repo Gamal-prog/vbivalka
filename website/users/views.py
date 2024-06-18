@@ -12,7 +12,7 @@ def userLogin(request):
         if user is not None:
             login(request, user)
             messages.error(request, ('You successfully loged in!'))
-            return redirect('home')
+            return redirect('create')
         else:
             messages.error(request, ('Invalid username or password!'))
             return redirect('login')
