@@ -1,0 +1,36 @@
+{% extends 'appitself/base.html' %}
+
+{% block title %} Login {% endblock title %}
+
+{% block additionalLinks %} 
+    <link rel="stylesheet" href="../../static/users/main.css">
+{% endblock additionalLinks %}
+
+{% block body %} 
+    <div class="center">
+        <h1>Login</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ login_form.username }}
+            </div>
+            <div class="col-md-1" style="height: 15px;"></div>
+            <div class="form-group">
+                {{ login_form.password }}
+            </div>
+            <div class="col-md-1" style="height: 15px;"></div>
+            <button type="submit" id="login-button">Login</button>
+            <div class="col-md-1" style="height: 15px;"></div>
+        </form>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+{% endblock body %}

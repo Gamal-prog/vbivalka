@@ -10,29 +10,35 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
     crossorigin=""/>
+    {% block additionalLinks %} {% endblock additionalLinks %}
 </head>
 <body>
     <div class="container-fluid">
-        <!-- Header -->
-        <div class="row bg-dark py-2">
-            <div class="col">
-                <nav class="navbar navbar-expand-lg navbar-dark">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin: auto;">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'create' %}">New Point</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'read' %}">List</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+        {% if user.is_authenticated %}
+            <!-- Header -->
+            <div class="row bg-dark py-2">
+                <div class="col">
+                    <nav class="navbar navbar-expand-lg navbar-dark">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'create' %}">New Point</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'read' %}">List</a>
+                                </li>
+                            </ul>
+                            <span class="navbar-text">
+                                Hi! {{user.username}} | <a href="{% url 'logout' %}">Logout</a>
+                            </span>
+                        </div>
+                    </nav>
+                </div>
             </div>
-        </div>
+        {% endif %}
         <!-- Space Between -->
         <div class="col-md-10" style="height: 50px;"></div>
         {% block body %} 
