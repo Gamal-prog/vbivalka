@@ -20,11 +20,13 @@ def userLogin(request):
     else:
         form = UserLogin()
 
-    content = {'login_form': form}
-    return render(request, 'users/index.html', content)
+    path = 'users/index.html'
+    context = {'login_form': form}
+    return render(request, path, context)
     
 def userLogout(request): 
     logout(request)
+
     return redirect('login')
     
     

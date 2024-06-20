@@ -6,17 +6,21 @@ from django.http import JsonResponse
 # Create your views here.
 def read(request):
     points = Point.objects.all()
-    content = {'points': points}
-    return render(request, 'appitself/read.html', content)
+
+    path = 'appitself/read.html'
+    context = {'points': points}
+    return render(request, path, context)
 
 def create(request):
-    form = PointForm()
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         form = PointForm(request.POST)
         if form.is_valid():
             form.save()
             return JsonResponse({'message': 'Success'})
+    else:
+        form = PointForm()
 
-    content = {'new_point': form}
-    return render(request, 'appitself/create.html', content)
+    path = 'appitself/create.html'
+    context = {'new_point': form}
+    return render(request, path, context)
 
