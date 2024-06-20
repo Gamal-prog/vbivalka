@@ -15,6 +15,21 @@ $(document).ready(function(){
         $('#id_longitude').val(coords.lng);
         $('#id_latitude').val(coords.lat);
 
+        const lat = coords.lat;
+        const lng = coords.lng;
+    
+        const query = 'https://nominatim.openstreetmap.org/reverse.php?format=jsonv2&lat=' + lat + '&lon=' + lng + '&zoom=18';
+
+        fetch(query)
+            .then(response => response.json())
+            .then(data => {
+                $('#id_street').val(data.address.road || 'Adress none');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                $('#id_street').val('Adress error!');
+            });
+
         if (marker) 
             map.removeLayer(marker); 
 
