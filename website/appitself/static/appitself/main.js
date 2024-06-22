@@ -9,6 +9,10 @@ $(document).ready(function(){
         maxZoom: 19,
     }).addTo(map); 
 
+    $('#loading-spinner').hide();
+    $('#success-icon').hide();
+    $('#danger-icon').hide();
+
     var marker; 
     function onMapClick(e) {
         var coords = e.latlng;
@@ -20,15 +24,25 @@ $(document).ready(function(){
     
         const query = 'https://nominatim.openstreetmap.org/reverse.php?format=jsonv2&lat=' + lat + '&lon=' + lng + '&zoom=18';
 
+        $('#loading-spinner').show();
+
         fetch(query)
             .then(response => response.json())
             .then(data => {
+                $('#loading-spinner').hide();
+                $('#success-icon').attr('width', '15');
+                $('#success-icon').show();
                 $('#id_street').val(data.address.road || 'Adress none');
             })
             .catch(error => {
+                $('#loading-spinner').hide();
+                $('#danger-icon').attr('width', '15');
+                $('#danger-icon').show();
                 console.error('Error:', error);
-                $('#id_street').val('Adress error!');
             });
+        $('#danger-icon').hide();
+        $('#success-icon').hide();
+        
 
         if (marker) 
             map.removeLayer(marker); 
@@ -51,6 +65,7 @@ $(document).ready(function(){
                 {
                     alert('Data is successfully written!');
                     $('#point_form')[0].reset();
+                    $('#success-icon').hide();
                 }
             }
         });
